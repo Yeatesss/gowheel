@@ -1,4 +1,4 @@
-module gowheel
+module github.com/Yeate/gowheel
 
 go 1.14
 
