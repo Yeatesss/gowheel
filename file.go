@@ -54,7 +54,6 @@ func DownloadFile(fileUrl string, path string, name string)(filename string,err 
 	}
 	filename = path + name
 	exists, _ := PathExists(filename)
-
 	if exists {
 		return
 	}
@@ -67,15 +66,13 @@ func DownloadFile(fileUrl string, path string, name string)(filename string,err 
 		log.Println("get file_url failed:", err)
 		return
 	}
-
-
-
 	data, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Println("read data failed:", fileUrl, err)
 		return
 	}
 	err= FilePutContents(filename, data)
+	return
 }
 
 /*
