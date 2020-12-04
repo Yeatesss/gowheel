@@ -34,6 +34,17 @@ func PathExists(path string) (bool, error) {
 	}
 	return false, err
 }
+//InitPath 初始化路径，不存在创建
+func InitPath(path string)(err error){
+	exists, _ := PathExists(path)
+	if !exists {
+		err =os.MkdirAll(path, os.ModePerm)   //创建多级目录
+		if err != nil{
+			return
+		}
+	}
+	return
+}
 //CopyFile 复制文件
 func CopyFile(dstName, srcName string) (written int64, err error) {
 	src, err := os.Open(srcName)
